@@ -1,10 +1,9 @@
 import { defineConfig } from 'vite'
 import solidPlugin from 'vite-plugin-solid'
 import Unocss from 'unocss/vite'
-import { unocssRules } from './src/modules/unocssRules'
 
 export default defineConfig({
-  plugins: [solidPlugin(), Unocss({ rules: unocssRules })],
+  plugins: [solidPlugin(), Unocss({ rules: [['index-bg-color', { 'background-color': '#1a2a3a' }]] })],
   server: {
     port: 3000,
   },
