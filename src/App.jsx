@@ -26,32 +26,30 @@ function App() {
 
   let slideRef, sliderRef
   const [shiftX, setShiftX] = createSignal(undefined)
-  const [isMouseDown, setIsMouseDown] = createSignal(false)
   const onMouseDown = (event) => {
     event.preventDefault()
-    setIsMouseDown(true)
-    console.log(isMouseDown())
     setShiftX(event.clientX - sliderRef.getBoundingClientRect().left)
+    document.addEventListener('mousemove', onMouseMove)
+    document.addEventListener('mouseup', onMouseUp)
   }
   const onMouseMove = (event) => {
-    if (isMouseDown()) {
-      console.log(222)
-      let newLeft = event.clientX - shiftX() - sliderRef.getBoundingClientRect().left
-      console.log('newLeft', newLeft)
-      // the pointer is out of slider => lock the thumb within the bounaries
-      if (newLeft < 0) {
-        newLeft = 0
-      }
-      let rightEdge = slideRef.offsetWidth - sliderRef.offsetWidth
-      if (newLeft > rightEdge) {
-        newLeft = rightEdge
-      }
-
-      sliderRef.style.left = newLeft + 'px'
+    let newLeft = event.clientX - shiftX() - slideRef.getBoundingClientRect().left
+    if (newLeft < 0) {
+      newLeft = 0
     }
+    let rightEdge = slideRef.offsetWidth - sliderRef.offsetWidth
+    if (newLeft > rightEdge) {
+      newLeft = rightEdge
+    }
+    sliderRef.style.left = newLeft + 'px'
   }
-  const onMouseUp = (event) => {
-    setIsMouseDown(false)
+  const onMouseUp = () => {
+    setShiftX(undefined)
+    document.removeEventListener('mousemove', onMouseMove)
+    document.removeEventListener('mouseup', onMouseUp)
+  }
+  const onDragStart = (event) => {
+    event.preventDefault()
   }
 
   return (
@@ -69,8 +67,8 @@ function App() {
             <div class="text-18px">Character length</div>
             <div class="text-36px text-green font-normal">{password().length}</div>
           </div>
-          <div ref={slideRef} class="relative h-24px w-100% mb-12px" onMouseMove={onMouseMove} onMouseUp={onMouseUp}>
-            <div ref={sliderRef} class="absolute slider" onMouseDown={onMouseDown}></div>
+          <div ref={slideRef} class="relative h-24px w-100% mb-12px">
+            <div ref={sliderRef} class="absolute slider" onMouseDown={onMouseDown} onDragStart={onDragStart}></div>
           </div>
           <For each={Object.keys(passwordOptions())}>
             {(option, i) => (
