@@ -12,6 +12,15 @@ export default defineConfig({
         ['center', { 'margin-inline': 'auto' }],
         ['font-main-size', { 'font-size': '20px' }],
         [
+          'slider',
+          {
+            width: '24px',
+            height: '24px',
+            'border-radius': '50%',
+            background: '#dddddd',
+          },
+        ],
+        [
           'checkbox',
           {
             position: 'relative',
