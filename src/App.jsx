@@ -33,10 +33,10 @@ function App() {
           <div class="text-36px">{password}</div>
         </div>
         <div class="h-30px index-bg-color"></div>
-        <div class="h-400px ps-16px pe-16px pt-20px">
+        <div class="h-400px ps-16px pe-16px pt-20px font-bold">
           <div class="flex justify-between items-center">
             <div class="text-18px">Character length</div>
-            <div class="text-36px">{password().length}</div>
+            <div class="text-36px text-green">{password().length}</div>
           </div>
           <For each={Object.keys(passwordOptions())}>
             {(option, i) => (
