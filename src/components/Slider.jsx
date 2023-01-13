@@ -1,7 +1,7 @@
 import { createSignal } from 'solid-js'
 
 function Slider(props) {
-  let slideRef, thumbRef
+  let slideRef, thumbRef, darkSlideRef
   const [shiftX, setShiftX] = createSignal(undefined)
   const isTouchDevice = 'ontouchstart' in document.documentElement
 
@@ -24,6 +24,7 @@ function Slider(props) {
       newLeft = rightEdge
     }
     thumbRef.style.left = newLeft + 'px'
+    darkSlideRef.style.width = slideRef.offsetWidth - newLeft - thumbRef.offsetWidth / 2 + 'px'
 
     // Calculate the percentage of the slider
     let sliderPercentage = (newLeft + thumbRef.offsetWidth / 2) / slideRef.offsetWidth
@@ -59,7 +60,7 @@ function Slider(props) {
         event.touches[0].clientY < thumbRef.getBoundingClientRect().bottom
       ) {
         setShiftX(event.touches[0].clientX - thumbRef.getBoundingClientRect().left)
-        document.addEventListener('touchmove', onTouchMove)
+        document.addEventListener('touchmove', onSlide)
         document.addEventListener('touchup', onTouchUp)
       }
     }
@@ -67,18 +68,19 @@ function Slider(props) {
 
   const onTouchUp = () => {
     setShiftX(undefined)
-    document.removeEventListener('touchmove', onTouchMove)
+    document.removeEventListener('touchmove', onSlide)
     document.removeEventListener('touchup', onTouchUp)
   }
   return (
-    <div ref={slideRef} class="relative before:content-empty before:slide h-24px w-100% mb-12px">
+    <div ref={slideRef} class="relative overflow-hidden before:content-empty before:slide h-24px w-100% mb-12px">
       <div
         ref={thumbRef}
-        class="absolute top-0px left-0px slider"
+        class="z-1 slider"
         onMouseDown={isTouchDevice ? () => {} : onMouseDown}
         onTouchStart={isTouchDevice ? onTouchStart : () => {}}
         onDragStart={onDragStart}
       ></div>
+      <div ref={darkSlideRef} class="darkSlide"></div>
     </div>
   )
 }
