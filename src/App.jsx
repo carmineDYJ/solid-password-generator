@@ -24,6 +24,9 @@ const initPasswordOptions = () => {
 function App() {
   const [password, setPassword] = createSignal('123!a@5678')
   const [passwordOptions, setPasswordOptions] = createSignal(initPasswordOptions())
+  const shortestPasswordLength = 8
+  const longestPasswordLength = 20
+  const [passwordLength, setPasswordLength] = createSignal(shortestPasswordLength)
 
   return (
     <div class="font-mono text-18px">
@@ -38,9 +41,13 @@ function App() {
         <div class="ps-16px pe-16px pt-20px pb-20px font-bold">
           <div class="flex justify-between items-center">
             <div class="text-18px">Character length</div>
-            <div class="text-36px text-green font-normal">{password().length}</div>
+            <div class="text-36px text-green font-normal">{passwordLength()}</div>
           </div>
-          <Slider />
+          <Slider
+            setPasswordLength={setPasswordLength}
+            shortestPasswordLength={shortestPasswordLength}
+            longestPasswordLength={longestPasswordLength}
+          />
           <For each={Object.keys(passwordOptions())}>
             {(option, i) => (
               <div class="flex items-center mb-12px">

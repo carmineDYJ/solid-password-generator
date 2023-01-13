@@ -1,8 +1,9 @@
 import { createSignal } from 'solid-js'
 
-function Slider() {
+function Slider(props) {
   let slideRef, thumbRef
   const [shiftX, setShiftX] = createSignal(undefined)
+
   // PC slider
   const onMouseDown = (event) => {
     event.preventDefault()
@@ -20,6 +21,15 @@ function Slider() {
       newLeft = rightEdge
     }
     thumbRef.style.left = newLeft + 'px'
+
+    // Calculate the percentage of the slider
+    let sliderPercentage = (newLeft + thumbRef.offsetWidth / 2) / slideRef.offsetWidth
+    // Calculate the length of the password
+    let passwordLength =
+      props.shortestPasswordLength +
+      Math.ceil(sliderPercentage * (props.longestPasswordLength - props.shortestPasswordLength))
+    // Set the password length
+    props.setPasswordLength(passwordLength)
   }
   const onMouseUp = () => {
     setShiftX(undefined)
