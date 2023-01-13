@@ -12,6 +12,17 @@ export default defineConfig({
         ['center', { 'margin-inline': 'auto' }],
         ['font-main-size', { 'font-size': '20px' }],
         [
+          'slide',
+          {
+            display: 'block',
+            position: 'absolute',
+            top: '6px',
+            width: '100%',
+            height: '12px',
+            background: '#66ff99',
+          },
+        ],
+        [
           'slider',
           {
             width: '24px',
@@ -38,7 +49,6 @@ export default defineConfig({
             position: 'absolute',
             top: '5px',
             left: '3px',
-            content: '',
             width: '10px',
             border: '2px solid #1a2a3a',
             height: '5px',

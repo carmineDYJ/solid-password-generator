@@ -44,8 +44,13 @@ function Slider(props) {
       document.removeEventListener('mouseup', onMouseUp)
     }
     return (
-      <div ref={slideRef} class="relative h-24px w-100% mb-12px">
-        <div ref={thumbRef} class="absolute slider" onMouseDown={onMouseDown} onDragStart={onDragStart}></div>
+      <div ref={slideRef} class="relative before:content-empty before:slide h-24px w-100% mb-12px">
+        <div
+          ref={thumbRef}
+          class="absolute top-0px left-0px slider"
+          onMouseDown={onMouseDown}
+          onDragStart={onDragStart}
+        ></div>
       </div>
     )
   } else {
