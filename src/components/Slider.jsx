@@ -27,7 +27,8 @@ function Slider(props) {
     // Calculate the length of the password
     let passwordLength =
       props.shortestPasswordLength +
-      Math.ceil(sliderPercentage * (props.longestPasswordLength - props.shortestPasswordLength))
+      Math.ceil(sliderPercentage * (props.longestPasswordLength - props.shortestPasswordLength + 1)) -
+      1
     // Set the password length
     props.setPasswordLength(passwordLength)
   }
