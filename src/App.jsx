@@ -34,7 +34,7 @@ function App() {
         Solid Password Generator
       </h1>
       <main class="main-bg-color text-main center sm:w-85vw md:w-600px">
-        <div class="h-80px ps-20px pe-20px flex flex-column items-center">
+        <div class="h-80px ps-16px pe-16px flex flex-column items-center">
           <div class="text-36px">{password}</div>
         </div>
         <div class="h-30px index-bg-color"></div>
