@@ -1,5 +1,6 @@
 import { createSignal, For } from 'solid-js'
 import Checkbox from './components/Checkbox'
+import Slider from './components/Slider'
 
 const passwordInitOptions = {
   uppercaseIncluded: false,
@@ -24,34 +25,6 @@ function App() {
   const [password, setPassword] = createSignal('123!a@5678')
   const [passwordOptions, setPasswordOptions] = createSignal(initPasswordOptions())
 
-  let slideRef, thumbRef
-  const [shiftX, setShiftX] = createSignal(undefined)
-  const onMouseDown = (event) => {
-    event.preventDefault()
-    setShiftX(event.clientX - thumbRef.getBoundingClientRect().left)
-    document.addEventListener('mousemove', onMouseMove)
-    document.addEventListener('mouseup', onMouseUp)
-  }
-  const onMouseMove = (event) => {
-    let newLeft = event.clientX - shiftX() - slideRef.getBoundingClientRect().left
-    if (newLeft < 0) {
-      newLeft = 0
-    }
-    let rightEdge = slideRef.offsetWidth - thumbRef.offsetWidth
-    if (newLeft > rightEdge) {
-      newLeft = rightEdge
-    }
-    thumbRef.style.left = newLeft + 'px'
-  }
-  const onMouseUp = () => {
-    setShiftX(undefined)
-    document.removeEventListener('mousemove', onMouseMove)
-    document.removeEventListener('mouseup', onMouseUp)
-  }
-  const onDragStart = (event) => {
-    event.preventDefault()
-  }
-
   return (
     <div class="font-mono text-18px">
       <h1 class="text-title text-center font-extrabold center sm:mt-60px md:mt-100px sm:mb-16px md:mb-32px">
@@ -67,9 +40,7 @@ function App() {
             <div class="text-18px">Character length</div>
             <div class="text-36px text-green font-normal">{password().length}</div>
           </div>
-          <div ref={slideRef} class="relative h-24px w-100% mb-12px">
-            <div ref={thumbRef} class="absolute slider" onMouseDown={onMouseDown} onDragStart={onDragStart}></div>
-          </div>
+          <Slider />
           <For each={Object.keys(passwordOptions())}>
             {(option, i) => (
               <div class="flex items-center mb-12px">
