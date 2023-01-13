@@ -24,11 +24,11 @@ function App() {
   const [password, setPassword] = createSignal('123!a@5678')
   const [passwordOptions, setPasswordOptions] = createSignal(initPasswordOptions())
 
-  let slideRef, sliderRef
+  let slideRef, thumbRef
   const [shiftX, setShiftX] = createSignal(undefined)
   const onMouseDown = (event) => {
     event.preventDefault()
-    setShiftX(event.clientX - sliderRef.getBoundingClientRect().left)
+    setShiftX(event.clientX - thumbRef.getBoundingClientRect().left)
     document.addEventListener('mousemove', onMouseMove)
     document.addEventListener('mouseup', onMouseUp)
   }
@@ -37,11 +37,11 @@ function App() {
     if (newLeft < 0) {
       newLeft = 0
     }
-    let rightEdge = slideRef.offsetWidth - sliderRef.offsetWidth
+    let rightEdge = slideRef.offsetWidth - thumbRef.offsetWidth
     if (newLeft > rightEdge) {
       newLeft = rightEdge
     }
-    sliderRef.style.left = newLeft + 'px'
+    thumbRef.style.left = newLeft + 'px'
   }
   const onMouseUp = () => {
     setShiftX(undefined)
@@ -68,7 +68,7 @@ function App() {
             <div class="text-36px text-green font-normal">{password().length}</div>
           </div>
           <div ref={slideRef} class="relative h-24px w-100% mb-12px">
-            <div ref={sliderRef} class="absolute slider" onMouseDown={onMouseDown} onDragStart={onDragStart}></div>
+            <div ref={thumbRef} class="absolute slider" onMouseDown={onMouseDown} onDragStart={onDragStart}></div>
           </div>
           <For each={Object.keys(passwordOptions())}>
             {(option, i) => (
