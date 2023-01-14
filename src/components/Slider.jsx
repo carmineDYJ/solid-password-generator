@@ -67,7 +67,6 @@ function Slider(props) {
   }
 
   const onTouchEnd = () => {
-    console.log(777)
     setShiftX(undefined)
     document.removeEventListener('touchmove', onSlide)
     document.removeEventListener('touchend', onTouchEnd)
