@@ -2,13 +2,14 @@ function RefreshIcon(props) {
   return (
     <svg
       t="1673688701989"
-      class="icon"
+      class={'icon ' + props.class}
       viewBox="0 0 1024 1024"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       p-id="3461"
       width={props.width ? props.width : '200'}
       height={props.height ? props.height : '200'}
+      onClick={props.onClick}
     >
       <path
         d="M990.08 425.6a30.72 30.72 0 0 1 0 44.8l-135.68 135.68a30.72 30.72 0 0 1-44.8 0l-135.68-135.68a31.36 31.36 0 1 1 44.8-44.8L832 538.24l113.28-112.64a30.72 30.72 0 0 1 44.8 0z"

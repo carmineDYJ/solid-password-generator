@@ -35,6 +35,10 @@ function App() {
   createEffect(() => {
     setPassword(passwordGenerate(passwordOptions(), passwordLength()))
   })
+
+  const refreshPassword = () => {
+    setPassword(passwordGenerate(passwordOptions(), passwordLength()))
+  }
   return (
     <div class="font-mono text-18px">
       <h1 class="text-title text-center font-extrabold center sm:mt-60px md:mt-100px sm:mb-16px md:mb-32px">
@@ -44,8 +48,8 @@ function App() {
         <div class="relative h-80px ps-16px pe-16px flex items-center">
           <div class="max-w-[calc(100%-64px)] overflow-hidden whitespace-nowrap text-36px">{password}</div>
           <div class="absolute top-16px right-78px w-40px h-[calc(100%-32px)] blurEffect"></div>
-          <CopyIcon class="ml-auto ml-2px mr-6px" width="28" height="28" />
-          <RefreshIcon width="28" height="28" />
+          <CopyIcon class="ml-auto ml-2px mr-6px cursor-pointer" width="28" height="28" />
+          <RefreshIcon class="cursor-pointer" width="28" height="28" onClick={refreshPassword} />
         </div>
         <div class="h-30px index-bg-color"></div>
         <div class="ps-16px pe-16px pt-20px pb-20px font-bold">
