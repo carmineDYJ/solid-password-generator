@@ -38,7 +38,7 @@ function initPasswordLength() {
     if (isNaN(parsed)) {
       localStorage.setItem('passwordLength', shortestPasswordLength)
       return shortestPasswordLength
-    } else if (parsed > shortestPasswordLength && parsed < longestPasswordLength) {
+    } else if (parsed >= shortestPasswordLength && parsed <= longestPasswordLength) {
       return parsed
     }
   } else {
