@@ -7,19 +7,22 @@ function Slider(props) {
 
   // set the initial position of the thumb
   // TODO set it to the middle of the interval
+  // TODO extract below calculation to a function
   onMount(() => {
-    thumbRef.style.left =
+    let initLeft =
       slideRef.offsetWidth *
-        ((props.passwordLength - props.shortestPasswordLength) /
-          (props.longestPasswordLength - props.shortestPasswordLength + 1)) +
-      'px'
-    darkSlideRef.style.width =
-      slideRef.offsetWidth -
-      slideRef.offsetWidth *
-        ((props.passwordLength - props.shortestPasswordLength) /
-          (props.longestPasswordLength - props.shortestPasswordLength + 1)) +
-      -(thumbRef.offsetWidth / 2) +
-      'px'
+      ((props.passwordLength - props.shortestPasswordLength) /
+        (props.longestPasswordLength - props.shortestPasswordLength + 1))
+    console.log(initLeft)
+    if (initLeft < 0) {
+      initLeft = 0
+    }
+    let rightEdge = slideRef.offsetWidth - thumbRef.offsetWidth
+    if (initLeft > rightEdge) {
+      initLeft = rightEdge
+    }
+    thumbRef.style.left = initLeft + 'px'
+    darkSlideRef.style.width = slideRef.offsetWidth - initLeft - thumbRef.offsetWidth / 2 + 'px'
   })
 
   const onDragStart = (event) => {
