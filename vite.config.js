@@ -12,6 +12,12 @@ export default defineConfig({
         ['center', { 'margin-inline': 'auto' }],
         ['font-main-size', { 'font-size': '20px' }],
         [
+          'blurEffect',
+          {
+            background: 'linear-gradient(90deg, transparent 0%, #4a5a6a 100%)',
+          },
+        ],
+        [
           'slide',
           {
             display: 'block',
@@ -37,7 +43,6 @@ export default defineConfig({
         [
           'slider',
           {
-            display: 'block',
             position: 'absolute',
             top: '0px',
             left: '0px',
