@@ -44,6 +44,7 @@ export default defineConfig({
           'slider',
           {
             position: 'absolute',
+            cursor: 'pointer',
             top: '0px',
             left: '0px',
             width: '24px',
