@@ -6,31 +6,36 @@ import CopyIcon from './assets/icons/CopyIcon'
 import RefreshIcon from './assets/icons/RefreshIcon'
 
 const passwordInitOptions = {
-  uppercaseIncluded: false,
-  lowercaseIncluded: false,
-  numberIncluded: false,
-  signalIncluded: false,
+  lowercaseIncluded: true,
+  uppercaseIncluded: true,
+  numberIncluded: true,
+  signalIncluded: true,
 }
 const passwordOptionHints = [
-  'Include Uppercase Letters',
   'Include Lowercase Letters',
+  'Include Uppercase Letters',
   'Include Numbers',
   'Include Symbols',
 ]
-const initPasswordOptions = () => {
-  Object.keys(passwordInitOptions).forEach((key) => {
-    passwordInitOptions[key] = localStorage.getItem(key) === 'true' ? true : false
-  })
+
+function initPasswordOptions() {
+  for (const key of Object.keys(passwordInitOptions)) {
+    if (localStorage.getItem(key) === 'true' || localStorage.getItem(key) === 'false') {
+      passwordInitOptions[key] = localStorage.getItem(key) === 'true'
+    } else {
+      localStorage.setItem(key, passwordInitOptions[key])
+    }
+  }
   return passwordInitOptions
 }
 
 function App() {
-  const [password, setPassword] = createSignal('123!a@5678')
+  const [password, setPassword] = createSignal('')
   const [passwordOptions, setPasswordOptions] = createSignal(initPasswordOptions())
   const shortestPasswordLength = 8
   const longestPasswordLength = 20
   const [passwordLength, setPasswordLength] = createSignal(shortestPasswordLength)
-
+  console.log(passwordOptions())
   setPassword(passwordGenerate(passwordOptions(), passwordLength()))
   createEffect(() => {
     setPassword(passwordGenerate(passwordOptions(), passwordLength()))
@@ -76,6 +81,15 @@ function App() {
                 <Checkbox
                   class="sm:me-6px md:me-12px"
                   onClick={() => {
+                    let optionCanDisable = false
+                    for (const key of Object.keys(passwordOptions())) {
+                      if (key === option) continue
+                      if (passwordOptions()[key]) {
+                        optionCanDisable = true
+                        break
+                      }
+                    }
+                    if (!optionCanDisable && passwordOptions()[option]) return
                     setPasswordOptions({ ...passwordOptions(), [option]: !passwordOptions()[option] })
                     localStorage.setItem(option, passwordOptions()[option])
                   }}
