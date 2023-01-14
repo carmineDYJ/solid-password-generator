@@ -61,15 +61,16 @@ function Slider(props) {
       ) {
         setShiftX(event.touches[0].clientX - thumbRef.getBoundingClientRect().left)
         document.addEventListener('touchmove', onSlide)
-        document.addEventListener('touchup', onTouchUp)
+        document.addEventListener('touchend', onTouchEnd)
       }
     }
   }
 
-  const onTouchUp = () => {
+  const onTouchEnd = () => {
+    console.log(777)
     setShiftX(undefined)
     document.removeEventListener('touchmove', onSlide)
-    document.removeEventListener('touchup', onTouchUp)
+    document.removeEventListener('touchend', onTouchEnd)
   }
   return (
     <div ref={slideRef} class="relative overflow-hidden before:content-empty before:slide h-24px w-100% mb-12px">
