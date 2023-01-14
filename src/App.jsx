@@ -1,7 +1,9 @@
 import { createEffect, createSignal, For } from 'solid-js'
+import passwordGenerate from './utils/passwordGenerate'
 import Checkbox from './components/Checkbox'
 import Slider from './components/Slider'
-import passwordGenerate from './utils/passwordGenerate'
+import CopyIcon from './assets/icons/CopyIcon'
+import RefreshIcon from './assets/icons/RefreshIcon'
 
 const passwordInitOptions = {
   uppercaseIncluded: false,
@@ -41,6 +43,8 @@ function App() {
       <main class="main-bg-color text-main center sm:w-85vw md:w-600px">
         <div class="h-80px ps-16px pe-16px flex items-center truncate">
           <div class="text-36px">{password}</div>
+          <CopyIcon width="36" height="36" />
+          <RefreshIcon width="36" height="36" />
         </div>
         <div class="h-30px index-bg-color"></div>
         <div class="ps-16px pe-16px pt-20px pb-20px font-bold">
