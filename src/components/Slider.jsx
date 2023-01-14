@@ -13,7 +13,6 @@ function Slider(props) {
       slideRef.offsetWidth *
       ((props.passwordLength - props.shortestPasswordLength) /
         (props.longestPasswordLength - props.shortestPasswordLength + 1))
-    console.log(initLeft)
     if (initLeft < 0) {
       initLeft = 0
     }
