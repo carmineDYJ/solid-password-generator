@@ -29,12 +29,28 @@ function initPasswordOptions() {
   return passwordInitOptions
 }
 
+const shortestPasswordLength = 8
+const longestPasswordLength = 20
+
+function initPasswordLength() {
+  if (localStorage.getItem('passwordLength')) {
+    const parsed = parseInt(localStorage.getItem('passwordLength'))
+    if (isNaN(parsed)) {
+      localStorage.setItem('passwordLength', shortestPasswordLength)
+      return shortestPasswordLength
+    } else {
+      return parsed
+    }
+  } else {
+    localStorage.setItem('passwordLength', shortestPasswordLength)
+    return shortestPasswordLength
+  }
+}
+
 function App() {
   const [password, setPassword] = createSignal('')
   const [passwordOptions, setPasswordOptions] = createSignal(initPasswordOptions())
-  const shortestPasswordLength = 8
-  const longestPasswordLength = 20
-  const [passwordLength, setPasswordLength] = createSignal(shortestPasswordLength)
+  const [passwordLength, setPasswordLength] = createSignal(initPasswordLength())
   console.log(passwordOptions())
   setPassword(passwordGenerate(passwordOptions(), passwordLength()))
   createEffect(() => {
@@ -71,6 +87,7 @@ function App() {
             <div class="text-36px text-green font-normal">{passwordLength()}</div>
           </div>
           <Slider
+            passwordLength={passwordLength()}
             setPasswordLength={setPasswordLength}
             shortestPasswordLength={shortestPasswordLength}
             longestPasswordLength={longestPasswordLength}

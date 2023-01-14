@@ -1,9 +1,26 @@
-import { createSignal } from 'solid-js'
+import { createSignal, onMount } from 'solid-js'
 
 function Slider(props) {
   let slideRef, thumbRef, darkSlideRef
   const [shiftX, setShiftX] = createSignal(undefined)
   const isTouchDevice = 'ontouchstart' in document.documentElement
+
+  // set the initial position of the thumb
+  // TODO set it to the middle of the interval
+  onMount(() => {
+    thumbRef.style.left =
+      slideRef.offsetWidth *
+        ((props.passwordLength - props.shortestPasswordLength) /
+          (props.longestPasswordLength - props.shortestPasswordLength + 1)) +
+      'px'
+    darkSlideRef.style.width =
+      slideRef.offsetWidth -
+      slideRef.offsetWidth *
+        ((props.passwordLength - props.shortestPasswordLength) /
+          (props.longestPasswordLength - props.shortestPasswordLength + 1)) +
+      -(thumbRef.offsetWidth / 2) +
+      'px'
+  })
 
   const onDragStart = (event) => {
     event.preventDefault()
@@ -35,6 +52,7 @@ function Slider(props) {
       1
     // Set the password length
     props.setPasswordLength(passwordLength)
+    localStorage.setItem('passwordLength', passwordLength)
   }
 
   const onMouseDown = (event) => {
