@@ -24,8 +24,11 @@ function passwordGenerate(options, length) {
       }
     }
   }
-  return { password }
+  const passwordStrength = Object.values(strength).reduce((a, b) => a + b, 0)
+  for (const key in strength) {
+    strength[key] = 0
+  }
+  return { password, passwordStrength }
 }
 
 export default passwordGenerate
-export { patterns }

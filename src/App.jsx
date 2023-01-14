@@ -55,11 +55,15 @@ function App() {
   const maxPasswordStrength = 4
   const [passwordStrength, setPasswordStrength] = createSignal(0)
   createEffect(() => {
-    setPassword(passwordGenerate(passwordOptions(), passwordLength())['password'])
+    const { password, passwordStrength } = passwordGenerate(passwordOptions(), passwordLength())
+    setPassword(password)
+    setPasswordStrength(passwordStrength)
   })
 
   const refreshPassword = () => {
-    setPassword(passwordGenerate(passwordOptions(), passwordLength())['password'])
+    const { password, passwordStrength } = passwordGenerate(passwordOptions(), passwordLength())
+    setPassword(password)
+    setPasswordStrength(passwordStrength)
   }
   const copyPassword2Clipboard = async () => {
     await navigator.clipboard.writeText(password())
