@@ -8,6 +8,7 @@ function Slider(props) {
   // set the initial position of the thumb
   // TODO set it to the middle of the interval
   // TODO extract below calculation to a function
+  // TODO 1 pixel issue, weird when set to 20 on mobile
   onMount(() => {
     let initLeft =
       slideRef.offsetWidth *
