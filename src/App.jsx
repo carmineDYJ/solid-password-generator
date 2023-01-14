@@ -38,7 +38,7 @@ function initPasswordLength() {
     if (isNaN(parsed)) {
       localStorage.setItem('passwordLength', shortestPasswordLength)
       return shortestPasswordLength
-    } else {
+    } else if (parsed > shortestPasswordLength && parsed < longestPasswordLength) {
       return parsed
     }
   } else {
@@ -70,7 +70,9 @@ function App() {
       </h1>
       <main class="main-bg-color text-main center sm:w-85vw md:w-600px">
         <div class="relative h-80px ps-16px pe-16px flex items-center">
-          <div class="max-w-[calc(100%-64px)] overflow-hidden whitespace-nowrap text-36px">{password}</div>
+          <div class="max-w-[calc(100%-64px)] overflow-hidden whitespace-nowrap sm:text-30px md:text-36px">
+            {password}
+          </div>
           <div class="absolute top-16px right-78px w-40px h-[calc(100%-32px)] blurEffect"></div>
           <CopyIcon
             class="ml-auto ml-2px mr-6px cursor-pointer"
@@ -116,6 +118,7 @@ function App() {
               </div>
             )}
           </For>
+          <div></div>
         </div>
       </main>
     </div>
