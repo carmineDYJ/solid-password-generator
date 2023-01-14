@@ -41,10 +41,10 @@ function App() {
         Solid Password Generator
       </h1>
       <main class="main-bg-color text-main center sm:w-85vw md:w-600px">
-        <div class="h-80px ps-16px pe-16px flex items-center truncate">
-          <div class="text-36px">{password}</div>
-          <CopyIcon width="36" height="36" />
-          <RefreshIcon width="36" height="36" />
+        <div class="h-80px ps-16px pe-16px flex items-center">
+          <div class="max-w-[calc(100%-56px)] truncate text-36px">{password}</div>
+          <CopyIcon class="ml-auto" width="28" height="28" />
+          <RefreshIcon width="28" height="28" />
         </div>
         <div class="h-30px index-bg-color"></div>
         <div class="ps-16px pe-16px pt-20px pb-20px font-bold">

@@ -2,7 +2,7 @@ function CopyIcon(props) {
   return (
     <svg
       t="1673688699919"
-      class="icon"
+      class={'icon ' + props.class}
       viewBox="0 0 1024 1024"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
