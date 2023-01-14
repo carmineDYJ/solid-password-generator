@@ -1,6 +1,7 @@
 import { createSignal, For } from 'solid-js'
 import Checkbox from './components/Checkbox'
 import Slider from './components/Slider'
+import passwordGenerate from './utils/passwordGenerate'
 
 const passwordInitOptions = {
   uppercaseIncluded: false,
@@ -27,6 +28,8 @@ function App() {
   const shortestPasswordLength = 8
   const longestPasswordLength = 20
   const [passwordLength, setPasswordLength] = createSignal(shortestPasswordLength)
+
+  setPassword(passwordGenerate(passwordOptions(), passwordLength()))
 
   return (
     <div class="font-mono text-18px">
