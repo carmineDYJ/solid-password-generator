@@ -1,4 +1,4 @@
-import { createSignal, For } from 'solid-js'
+import { createEffect, createSignal, For } from 'solid-js'
 import Checkbox from './components/Checkbox'
 import Slider from './components/Slider'
 import passwordGenerate from './utils/passwordGenerate'
@@ -30,7 +30,9 @@ function App() {
   const [passwordLength, setPasswordLength] = createSignal(shortestPasswordLength)
 
   setPassword(passwordGenerate(passwordOptions(), passwordLength()))
-
+  createEffect(() => {
+    setPassword(passwordGenerate(passwordOptions(), passwordLength()))
+  })
   return (
     <div class="font-mono text-18px">
       <h1 class="text-title text-center font-extrabold center sm:mt-60px md:mt-100px sm:mb-16px md:mb-32px">
