@@ -82,9 +82,13 @@ export default defineConfig({
       ],
       theme: {
         colors: {
-          title: '#4a5a6a',
           main: '#dddddd',
+          red: '#ff6666',
+          orange: '#ff9966',
+          yellow: '#ffff66',
           green: '#66ff99',
+          smGray: '#4a5a6a',
+          lgGray: '#2a3a4a',
         },
         breakpoints: {
           sm: '0px',

@@ -1,4 +1,4 @@
-import { createEffect, createSignal, For } from 'solid-js'
+import { createEffect, createSignal, For, Match, Switch } from 'solid-js'
 import passwordGenerate from './utils/passwordGenerate'
 import Checkbox from './components/Checkbox'
 import Slider from './components/Slider'
@@ -51,7 +51,8 @@ function App() {
   const [password, setPassword] = createSignal('')
   const [passwordOptions, setPasswordOptions] = createSignal(initPasswordOptions())
   const [passwordLength, setPasswordLength] = createSignal(initPasswordLength())
-  console.log(passwordOptions())
+  const maxPasswordStrength = 4
+  const [passwordStrength, setPasswordStrength] = createSignal(4)
   setPassword(passwordGenerate(passwordOptions(), passwordLength()))
   createEffect(() => {
     setPassword(passwordGenerate(passwordOptions(), passwordLength()))
@@ -65,7 +66,7 @@ function App() {
   }
   return (
     <div class="font-mono text-18px">
-      <h1 class="text-title text-center font-extrabold center sm:mt-60px md:mt-100px sm:mb-16px md:mb-32px">
+      <h1 class="text-smGray text-center font-extrabold center sm:mt-60px md:mt-100px sm:mb-16px md:mb-32px">
         Solid Password Generator
       </h1>
       <main class="main-bg-color text-main center sm:w-85vw md:w-600px">
@@ -118,7 +119,48 @@ function App() {
               </div>
             )}
           </For>
-          <div></div>
+          <div class="flex items-center bg-lgGray sm:p-16px md:p-24px">
+            <div>STRENGTH</div>
+            <For each={new Array(maxPasswordStrength)}>
+              {(strength, i) => {
+                return (
+                  <Switch
+                    fallback={
+                      <div
+                        class="w-12px h-30px b-3px b-solid b-main"
+                        classList={{ 'ml-auto': i() === 0, 'ml-6px': i() > 0 }}
+                      ></div>
+                    }
+                  >
+                    <Match when={passwordStrength() === 1 && i() < 1}>
+                      <div
+                        class="w-12px h-30px b-3px b-solid b-red bg-red"
+                        classList={{ 'ml-auto': i() === 0, 'ml-6px': i() > 0 }}
+                      ></div>
+                    </Match>
+                    <Match when={passwordStrength() === 2 && i() < 2}>
+                      <div
+                        class="w-12px h-30px b-3px b-solid b-orange bg-orange"
+                        classList={{ 'ml-auto': i() === 0, 'ml-6px': i() > 0 }}
+                      ></div>
+                    </Match>
+                    <Match when={passwordStrength() === 3 && i() < 3}>
+                      <div
+                        class="w-12px h-30px b-3px b-solid b-yellow bg-yellow"
+                        classList={{ 'ml-auto': i() === 0, 'ml-6px': i() > 0 }}
+                      ></div>
+                    </Match>
+                    <Match when={passwordStrength() === 4 && i() < 4}>
+                      <div
+                        class="w-12px h-30px b-3px b-solid b-green bg-green"
+                        classList={{ 'ml-auto': i() === 0, 'ml-6px': i() > 0 }}
+                      ></div>
+                    </Match>
+                  </Switch>
+                )
+              }}
+            </For>
+          </div>
         </div>
       </main>
     </div>
