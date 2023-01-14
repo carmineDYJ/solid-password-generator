@@ -49,6 +49,7 @@ function initPasswordLength() {
 }
 
 function App() {
+  //TODO disable touchmove on mobile
   const [password, setPassword] = createSignal('')
   const [passwordOptions, setPasswordOptions] = createSignal(initPasswordOptions())
   const [passwordLength, setPasswordLength] = createSignal(initPasswordLength())
@@ -69,7 +70,7 @@ function App() {
     await navigator.clipboard.writeText(password())
   }
   return (
-    <div class="font-mono text-18px">
+    <div class="font-mono sm:16px md:text-18px">
       <h1 class="text-smGray text-center font-extrabold center sm:mt-60px md:mt-100px sm:mb-16px md:mb-32px">
         Solid Password Generator
       </h1>
@@ -79,6 +80,7 @@ function App() {
             {password}
           </div>
           <div class="absolute top-16px right-78px w-40px h-[calc(100%-32px)] blurEffect"></div>
+          {/* TODO add click feedback */}
           <CopyIcon
             class="ml-auto ml-2px mr-6px cursor-pointer"
             width="28"
