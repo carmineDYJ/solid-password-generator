@@ -33,25 +33,26 @@ function initPasswordOptions() {
 const shortestPasswordLength = 8
 const longestPasswordLength = 20
 
-function initPasswordLength() {
-  if (localStorage.getItem('passwordLength')) {
-    const parsed = parseInt(localStorage.getItem('passwordLength'))
-    if (isNaN(parsed)) {
-      localStorage.setItem('passwordLength', shortestPasswordLength)
-      return shortestPasswordLength
-    } else if (parsed >= shortestPasswordLength && parsed <= longestPasswordLength) {
-      return parsed
-    }
-  } else {
-    localStorage.setItem('passwordLength', shortestPasswordLength)
-    return shortestPasswordLength
-  }
-}
+// TODO fix strange slider display issue on mobile device
+// function initPasswordLength() {
+//   if (localStorage.getItem('passwordLength')) {
+//     const parsed = parseInt(localStorage.getItem('passwordLength'))
+//     if (isNaN(parsed)) {
+//       localStorage.setItem('passwordLength', shortestPasswordLength)
+//       return shortestPasswordLength
+//     } else if (parsed >= shortestPasswordLength && parsed <= longestPasswordLength) {
+//       return parsed
+//     }
+//   } else {
+//     localStorage.setItem('passwordLength', shortestPasswordLength)
+//     return shortestPasswordLength
+//   }
+// }
 
 function App() {
   const [password, setPassword] = createSignal('')
   const [passwordOptions, setPasswordOptions] = createSignal(initPasswordOptions())
-  const [passwordLength, setPasswordLength] = createSignal(initPasswordLength())
+  const [passwordLength, setPasswordLength] = createSignal(shortestPasswordLength)
   const maxPasswordStrength = 4
   const [passwordStrength, setPasswordStrength] = createSignal(0)
   createEffect(() => {

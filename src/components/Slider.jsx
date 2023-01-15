@@ -24,7 +24,7 @@ function Slider(props) {
       initLeft = rightEdge
     }
     thumbRef.style.left = initLeft + 'px'
-    darkSlideRef.style.width = slideRef.offsetWidth - initLeft - thumbRef.offsetWidth / 2 + 'px'
+    darkSlideRef.style.left = initLeft + thumbRef.offsetWidth / 2 + 'px'
   })
 
   const onDragStart = (event) => {
@@ -46,7 +46,7 @@ function Slider(props) {
       newLeft = rightEdge
     }
     thumbRef.style.left = newLeft + 'px'
-    darkSlideRef.style.width = slideRef.offsetWidth - newLeft - thumbRef.offsetWidth / 2 + 'px'
+    darkSlideRef.style.left = newLeft + thumbRef.offsetWidth / 2 + 'px'
 
     // Calculate the percentage of the slider
     let sliderPercentage = (newLeft + thumbRef.offsetWidth / 2) / slideRef.offsetWidth

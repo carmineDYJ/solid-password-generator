@@ -34,7 +34,7 @@ export default defineConfig({
           {
             position: 'absolute',
             top: '6px',
-            right: '0px',
+            left: '12px',
             width: '100%',
             height: '12px',
             background: '#1a2a3a',
