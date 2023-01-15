@@ -41,7 +41,7 @@ export default defineConfig({
           },
         ],
         [
-          'slider',
+          'thumb',
           {
             position: 'absolute',
             cursor: 'pointer',
