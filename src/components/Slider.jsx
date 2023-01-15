@@ -11,21 +11,21 @@ function Slider(props) {
   // TODO set it to the middle of the interval
   // TODO extract below calculation to a function
   // TODO 1 pixel issue, weird when set to 20 on mobile
-  onMount(() => {
-    let initLeft =
-      slideRef.offsetWidth *
-      ((props.passwordLength - props.shortestPasswordLength) /
-        (props.longestPasswordLength - props.shortestPasswordLength + 1))
-    if (initLeft < 0) {
-      initLeft = 0
-    }
-    let rightEdge = slideRef.offsetWidth - thumbRef.offsetWidth
-    if (initLeft > rightEdge) {
-      initLeft = rightEdge
-    }
-    thumbRef.style.left = initLeft + 'px'
-    darkSlideRef.style.left = initLeft + thumbRef.offsetWidth / 2 + 'px'
-  })
+  // onMount(() => {
+  //   let initLeft =
+  //     slideRef.offsetWidth *
+  //     ((props.passwordLength - props.shortestPasswordLength) /
+  //       (props.longestPasswordLength - props.shortestPasswordLength + 1))
+  //   if (initLeft < 0) {
+  //     initLeft = 0
+  //   }
+  //   let rightEdge = slideRef.offsetWidth - thumbRef.offsetWidth
+  //   if (initLeft > rightEdge) {
+  //     initLeft = rightEdge
+  //   }
+  //   thumbRef.style.left = initLeft + 'px'
+  //   darkSlideRef.style.left = initLeft + thumbRef.offsetWidth / 2 + 'px'
+  // })
 
   const onDragStart = (event) => {
     event.preventDefault()
