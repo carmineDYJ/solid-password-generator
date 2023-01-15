@@ -98,7 +98,7 @@ function Slider(props) {
     <div ref={slideRef} class="relative overflow-hidden before:content-empty before:slide h-24px w-100% mb-12px">
       <div
         ref={thumbRef}
-        class="z-1 slider"
+        class="z-1 thumb"
         onMouseDown={isTouchDevice ? () => {} : onMouseDown}
         onTouchStart={isTouchDevice ? onTouchStart : () => {}}
         onDragStart={onDragStart}
