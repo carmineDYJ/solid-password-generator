@@ -49,7 +49,6 @@ function initPasswordLength() {
 }
 
 function App() {
-  //TODO disable touchmove on mobile
   const [password, setPassword] = createSignal('')
   const [passwordOptions, setPasswordOptions] = createSignal(initPasswordOptions())
   const [passwordLength, setPasswordLength] = createSignal(initPasswordLength())

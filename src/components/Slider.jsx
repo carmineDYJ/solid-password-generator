@@ -5,6 +5,8 @@ function Slider(props) {
   const [shiftX, setShiftX] = createSignal(undefined)
   const isTouchDevice = 'ontouchstart' in document.documentElement
 
+  document.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false })
+
   // set the initial position of the thumb
   // TODO set it to the middle of the interval
   // TODO extract below calculation to a function
