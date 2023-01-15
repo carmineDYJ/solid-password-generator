@@ -71,7 +71,7 @@ function App() {
   }
   return (
     <div class="font-mono sm:16px md:text-18px">
-      <h1 class="text-smGray text-center font-extrabold center sm:mt-60px md:mt-100px sm:mb-16px md:mb-32px">
+      <h1 class="text-smGray text-center text-24px font-extrabold center sm:mt-60px md:mt-100px sm:mb-16px md:mb-32px">
         Solid Password Generator
       </h1>
       <main class="main-bg-color text-main center sm:w-85vw md:w-600px">
