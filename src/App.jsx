@@ -80,7 +80,12 @@ function App() {
           </div>
           <div class="absolute top-16px right-78px w-40px h-[calc(100%-32px)] blurEffect"></div>
           {/* TODO add click feedback */}
-          <CopyIcon class="ml-auto mr-6px cursor-pointer z-1" width="28" height="28" onClick={copyPassword2Clipboard} />
+          <CopyIcon
+            class="ml-auto ml-2px mr-6px cursor-pointer"
+            width="28"
+            height="28"
+            onClick={copyPassword2Clipboard}
+          />
           <RefreshIcon class="cursor-pointer" width="28" height="28" onClick={refreshPassword} />
         </div>
         <div class="h-30px index-bg-color"></div>
