@@ -11,6 +11,7 @@ function Slider(props) {
   // TODO set it to the middle of the interval
   // TODO extract below calculation to a function
   // TODO 1 pixel issue, weird when set to 20 on mobile
+  // TODO the codes that cause the weird issue
   // onMount(() => {
   //   let initLeft =
   //     slideRef.offsetWidth *
