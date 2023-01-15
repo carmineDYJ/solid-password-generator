@@ -8,6 +8,13 @@ tech stack: `solidjs + unocss + vite`
 
 generate **random** and **strong** passwords with ease
 
+## Usage
+
+Slide and Tick to generate a safe password!
+
+<img decoding="async" src="./src/assets/README/solid_password_generator.png" width="40%">
+
+
 ## Project Setup
 
 local development:
@@ -21,9 +28,3 @@ build:
 ```bash
 pnpm build
 ```
-
-## Usage
-
-Slide and Tick to generate a safe password!
-
-<img decoding="async" src="./src/assets/README/solid_password_generator.png" width="40%">
