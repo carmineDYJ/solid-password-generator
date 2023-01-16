@@ -10,7 +10,7 @@ function CopyIcon(props) {
     }, 1000)
   }
   return (
-    <div class={'relative ' + props.class}>
+    <div cursor="pointer" class="relative ml-auto mr-8px z-1">
       <div class="absolute -top-120% -translate-x-50% left-50% invisible" classList={{ 'animate-fade-out': clicked() }}>
         Copied!
       </div>

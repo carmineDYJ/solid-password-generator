@@ -70,23 +70,25 @@ function App() {
     await navigator.clipboard.writeText(password())
   }
   return (
-    <div class="font-mono sm:16px md:text-18px">
-      <h1 class="text-smGray text-center text-24px font-extrabold center sm:mt-60px md:mt-100px sm:mb-16px md:mb-32px">
+    <div font="mono" class="sm:16px md:text-18px">
+      <h1 text="smGray center 24px" font="extrabold" class="center sm:mt-60px md:mt-100px sm:mb-16px md:mb-32px">
         Solid Password Generator
       </h1>
-      <main class="text-main center sm:w-85vw md:w-600px">
-        <div class="bg-smGray relative h-80px ps-16px pe-16px mb-40px flex items-center">
-          <div class="max-w-[calc(100%-64px)] overflow-hidden whitespace-nowrap sm:text-30px md:text-36px">
+      <main text="main" class="center sm:w-85vw md:w-600px">
+        <div bg="smGray" class="relative h-80px ps-16px pe-16px mb-40px flex items-center">
+          <div overflow="hidden" whitespace="nowrap" class="max-w-[calc(100%-64px)] sm:text-30px md:text-36px">
             {password}
           </div>
           <div class="absolute top-16px right-78px w-40px h-[calc(100%-32px)] blurEffect"></div>
-          <CopyIcon class="ml-auto mr-8px cursor-pointer z-1" width="28" height="28" onClick={copyPassword2Clipboard} />
-          <RefreshIcon class="cursor-pointer" width="28" height="28" onClick={refreshPassword} />
+          <CopyIcon width="28" height="28" onClick={copyPassword2Clipboard} />
+          <RefreshIcon width="28" height="28" onClick={refreshPassword} />
         </div>
-        <div class="bg-smGray ps-16px pe-16px pt-20px pb-20px font-bold">
+        <div bg="smGray" font="bold" class="ps-16px pe-16px pt-20px pb-20px">
           <div class="flex justify-between items-center">
-            <div class="text-18px">Character length</div>
-            <div class="text-36px text-green font-normal">{passwordLength()}</div>
+            <div text="18px">Character length</div>
+            <div text="36px green" font="normal">
+              {passwordLength()}
+            </div>
           </div>
           <Slider
             passwordLength={passwordLength()}

@@ -10,6 +10,8 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@unocss/preset-attributify": "^0.48.4",
+    "@unocss/preset-uno": "^0.48.4",
     "prettier": "^2.8.2",
     "unocss": "^0.48.3",
     "vite": "^4.0.3",

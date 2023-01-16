@@ -8,32 +8,41 @@ function PasswordStrength(props) {
             <Switch
               fallback={
                 <div
-                  class="w-12px h-30px b-3px b-solid b-main"
+                  b="3px solid main"
+                  class="w-12px h-30px"
                   classList={{ 'ml-auto': i() === 0, 'ml-6px': i() > 0 }}
                 ></div>
               }
             >
               <Match when={props.passwordStrength === 1 && i() < 1}>
                 <div
-                  class="w-12px h-30px b-3px b-solid b-red bg-red"
+                  b="none"
+                  bg="red"
+                  class="w-12px h-30px"
                   classList={{ 'ml-auto': i() === 0, 'ml-6px': i() > 0 }}
                 ></div>
               </Match>
               <Match when={props.passwordStrength === 2 && i() < 2}>
                 <div
-                  class="w-12px h-30px b-3px b-solid b-orange bg-orange"
+                  b="none"
+                  bg="orange"
+                  class="w-12px h-30px"
                   classList={{ 'ml-auto': i() === 0, 'ml-6px': i() > 0 }}
                 ></div>
               </Match>
               <Match when={props.passwordStrength === 3 && i() < 3}>
                 <div
-                  class="w-12px h-30px b-3px b-solid b-yellow bg-yellow"
+                  b="none"
+                  bg="yellow"
+                  class="w-12px h-30px"
                   classList={{ 'ml-auto': i() === 0, 'ml-6px': i() > 0 }}
                 ></div>
               </Match>
               <Match when={props.passwordStrength === 4 && i() < 4}>
                 <div
-                  class="w-12px h-30px b-3px b-solid b-green bg-green"
+                  b="none"
+                  bg="green"
+                  class="w-12px h-30px"
                   classList={{ 'ml-auto': i() === 0, 'ml-6px': i() > 0 }}
                 ></div>
               </Match>

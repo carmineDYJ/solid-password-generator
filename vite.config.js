@@ -1,11 +1,14 @@
 import { defineConfig } from 'vite'
 import solidPlugin from 'vite-plugin-solid'
 import Unocss from 'unocss/vite'
+import presetAttributify from '@unocss/preset-attributify'
+import presetUno from '@unocss/preset-uno'
 
 export default defineConfig({
   plugins: [
     solidPlugin(),
     Unocss({
+      presets: [presetUno(), presetAttributify({})],
       rules: [
         ['center', { 'margin-inline': 'auto' }],
         [

@@ -96,7 +96,7 @@ function Slider(props) {
     document.removeEventListener('touchend', onTouchEnd)
   }
   return (
-    <div ref={slideRef} class="relative overflow-hidden before:content-empty before:slide h-24px w-100% mb-12px">
+    <div ref={slideRef} overflow="hidden" before="content-empty slide" class="relative h-24px w-100% mb-12px">
       <div
         ref={thumbRef}
         class="z-1 thumb"

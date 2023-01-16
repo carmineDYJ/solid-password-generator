@@ -10,7 +10,7 @@ function RefreshIcon(props) {
     }, 1000)
   }
   return (
-    <div class={'relative ' + props.class}>
+    <div cursor="pointer" class="relative">
       <div class="absolute -top-120% -translate-x-50% left-50% invisible" classList={{ 'animate-fade-out': clicked() }}>
         Refreshed!
       </div>
