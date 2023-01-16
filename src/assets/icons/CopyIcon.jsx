@@ -11,7 +11,7 @@ function CopyIcon(props) {
   }
   return (
     <div class={'relative ' + props.class}>
-      <div class="absolute -top-120% -translate-x-50% left-50% opacity-0" classList={{ 'animate-fade-out': clicked() }}>
+      <div class="absolute -top-120% -translate-x-50% left-50% invisible" classList={{ 'animate-fade-out': clicked() }}>
         Copied!
       </div>
       <svg
