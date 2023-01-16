@@ -5,6 +5,7 @@ function Slider(props) {
   const [shiftX, setShiftX] = createSignal(undefined)
   const isTouchDevice = 'ontouchstart' in document.documentElement
 
+  // TODO only disable when the slider is dragged
   document.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false })
 
   // set the initial position of the thumb
