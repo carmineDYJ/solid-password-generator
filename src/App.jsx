@@ -74,8 +74,8 @@ function App() {
       <h1 class="text-smGray text-center text-24px font-extrabold center sm:mt-60px md:mt-100px sm:mb-16px md:mb-32px">
         Solid Password Generator
       </h1>
-      <main class="main-bg-color text-main center sm:w-85vw md:w-600px">
-        <div class="relative h-80px ps-16px pe-16px flex items-center">
+      <main class="text-main center sm:w-85vw md:w-600px">
+        <div class="bg-smGray relative h-80px ps-16px pe-16px mb-40px flex items-center">
           <div class="max-w-[calc(100%-64px)] overflow-hidden whitespace-nowrap sm:text-30px md:text-36px">
             {password}
           </div>
@@ -83,8 +83,7 @@ function App() {
           <CopyIcon class="ml-auto mr-8px cursor-pointer z-1" width="28" height="28" onClick={copyPassword2Clipboard} />
           <RefreshIcon class="cursor-pointer" width="28" height="28" onClick={refreshPassword} />
         </div>
-        <div class="h-30px index-bg-color"></div>
-        <div class="ps-16px pe-16px pt-20px pb-20px font-bold">
+        <div class="bg-smGray ps-16px pe-16px pt-20px pb-20px font-bold">
           <div class="flex justify-between items-center">
             <div class="text-18px">Character length</div>
             <div class="text-36px text-green font-normal">{passwordLength()}</div>

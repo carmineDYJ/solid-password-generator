@@ -7,10 +7,7 @@ export default defineConfig({
     solidPlugin(),
     Unocss({
       rules: [
-        ['index-bg-color', { 'background-color': '#1a2a3a' }],
-        ['main-bg-color', { 'background-color': '#4a5a6a' }],
         ['center', { 'margin-inline': 'auto' }],
-        ['font-main-size', { 'font-size': '20px' }],
         [
           'blurEffect',
           {
@@ -89,6 +86,7 @@ export default defineConfig({
           green: '#66ff99',
           smGray: '#4a5a6a',
           lgGray: '#2a3a4a',
+          xlGray: '#1a2a3a',
         },
         breakpoints: {
           sm: '0px',
