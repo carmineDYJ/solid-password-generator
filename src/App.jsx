@@ -5,6 +5,7 @@ import Slider from './components/Slider'
 import CopyIcon from './assets/icons/CopyIcon'
 import RefreshIcon from './assets/icons/RefreshIcon'
 import PasswordStrength from './components/PasswordStrength'
+import PasswordOptions from './components/PasswordOptions'
 
 const passwordInitOptions = {
   lowercaseIncluded: true,
@@ -96,30 +97,11 @@ function App() {
             shortestPasswordLength={shortestPasswordLength}
             longestPasswordLength={longestPasswordLength}
           />
-          <For each={Object.keys(passwordOptions())}>
-            {(option, i) => (
-              <div class="flex items-center mb-12px">
-                <Checkbox
-                  class="sm:me-6px md:me-12px"
-                  onClick={() => {
-                    let optionCanDisable = false
-                    for (const key of Object.keys(passwordOptions())) {
-                      if (key === option) continue
-                      if (passwordOptions()[key]) {
-                        optionCanDisable = true
-                        break
-                      }
-                    }
-                    if (!optionCanDisable && passwordOptions()[option]) return
-                    setPasswordOptions({ ...passwordOptions(), [option]: !passwordOptions()[option] })
-                    localStorage.setItem(option, passwordOptions()[option])
-                  }}
-                  passwordOption={passwordOptions()[option]}
-                />
-                {passwordOptionHints[i()]}
-              </div>
-            )}
-          </For>
+          <PasswordOptions
+            passwordOptionHints={passwordOptionHints}
+            passwordOptions={passwordOptions()}
+            setPasswordOptions={setPasswordOptions}
+          />
           <PasswordStrength maxPasswordStrength={maxPasswordStrength} passwordStrength={passwordStrength()} />
         </div>
       </main>
