@@ -11,7 +11,10 @@ function RefreshIcon(props) {
   }
   return (
     <div cursor="pointer" class="relative">
-      <div class="absolute -top-120% -translate-x-50% left-50% invisible" classList={{ 'animate-fade-out': clicked() }}>
+      <div
+        class="absolute -top-120% -translate-x-50% left-50% op-0 select-none"
+        classList={{ 'animate-fade-out op-1': clicked() }}
+      >
         Refreshed!
       </div>
       <svg
