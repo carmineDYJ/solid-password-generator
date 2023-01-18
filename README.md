@@ -2,7 +2,7 @@
 
 a solid(js) password generator :-)
 
-Click [here](https://solid-password-generator.vercel.app/) to see the live demo
+Click [here](https://solid-password-generator.icarmine.com/) or [here](https://solid-password-generator.vercel.app/) to see the live demo
 
 tech stack: `solidjs + unocss + vite`
 
