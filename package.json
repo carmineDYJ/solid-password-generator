@@ -1,0 +1,24 @@
+{
+  "name": "vite-template-solid",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@unocss/preset-attributify": "^0.48.4",
+    "@unocss/preset-uno": "^0.48.4",
+    "prettier": "^2.8.2",
+    "unocss": "^0.48.3",
+    "vite": "^4.0.3",
+    "vite-plugin-solid": "^2.5.0"
+  },
+  "dependencies": {
+    "@unocss/reset": "^0.48.3",
+    "solid-js": "^1.6.6"
+  }
+}
